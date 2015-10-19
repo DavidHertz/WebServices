@@ -1,4 +1,4 @@
-package com.softtek.java.academy.soap.controller;
+package com.softtek.java.academy.soap.endpoint;
 
 import javax.xml.transform.Source;
 
@@ -17,7 +17,7 @@ import org.springframework.xml.transform.StringSource;
 
 @ContextConfiguration("classpath:test-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class OrderEndPointTest {
+public class BankEndpointTest {
 
 	@Autowired
 	private ApplicationContext applicationContext;
