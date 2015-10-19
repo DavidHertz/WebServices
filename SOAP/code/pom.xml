@@ -12,6 +12,7 @@
 	<properties>
 		<spring-version>3.2.13.RELEASE</spring-version>
 		<spring-ws-version>2.2.2.RELEASE</spring-ws-version>
+		<servlet.api.version>2.5</servlet.api.version>
 	</properties>
 
 	<dependencies>
@@ -78,6 +79,13 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.api.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
