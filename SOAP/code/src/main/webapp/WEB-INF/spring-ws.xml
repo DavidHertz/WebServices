@@ -1,5 +1,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:ws="http://www.springframework.org/schema/web-services"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
   http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd
@@ -11,9 +12,18 @@
 	<!-- detects @PayloadRoot -->
 	<ws:annotation-driven />
 
-	<ws:dynamic-wsdl id="orderDefinition" portTypeName="Orders"
-		locationUri="http://localhost:8081/spring-ws">
-		<ws:xsd location="/WEB-INF/service.xsd" />
+	<ws:dynamic-wsdl id="customers" 
+		portTypeName="CustomerService"
+		locationUri="/CustomerService"
+		targetNamespace="http://www.academy-softtek.com/soap">
+			<ws:xsd location="/WEB-INF/schemas/xsd/Customer.xsd" />
+	</ws:dynamic-wsdl>
+	
+	<ws:dynamic-wsdl id="bank" 
+		portTypeName="BankService"
+		locationUri="/BankService"
+		targetNamespace="http://www.academy-softtek.com/soap/bank">
+			<ws:xsd location="/WEB-INF/schemas/xsd/Bank.xsd" />
 	</ws:dynamic-wsdl>
 
 </beans>

@@ -6,6 +6,7 @@
 
 	<display-name>SOAP</display-name>
 
+<!-- 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
@@ -31,6 +32,8 @@
 		<servlet-name>web-service</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+ -->
+ 
 
 	<servlet>
 		<servlet-name>spring-ws</servlet-name>
@@ -39,10 +42,14 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>WEB-INF/spring-ws.xml</param-value>
 		</init-param>
+		<init-param>
+			<param-name>transformWsdlLocations</param-name>
+			<param-value>true</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>spring-ws</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 </web-app>
  

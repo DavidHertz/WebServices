@@ -2,6 +2,7 @@ package com.softtek.java.academy.soap.controller;
 
 import javax.xml.transform.Source;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,22 +21,33 @@ public class OrderEndPointTest {
 
 	@Autowired
 	private ApplicationContext applicationContext;
-	
+
 	private MockWebServiceClient mockWebServiceClient;
 	
+	@Before
+	public void setUp() {
+		mockWebServiceClient = MockWebServiceClient.createClient(applicationContext);
+	}
+
 	@Test
 	public void testValidOrderRequest() {
-		Source requestPayload = new StringSource(
-			      "<clientDataRequest xmlns='http://www.xpadro.spring.samples.com/orders' " +
-			        "clientId='123' productId='XA-55' quantity='5'/>");
+		final Source requestPayload = new StringSource(
+				"<bank:accountDetailsRequest xmlns:bank='http://www.academy-softtek.com/soap/bank'>"
+						+ "<numberAccount>abc</numberAccount>"
+						+ "<password>1234</password>"
+				+ "</bank:accountDetailsRequest>");
+
+		final Source responsePayload = new StringSource(
+				"<bank:accountDetailsResponse xmlns:bank='http://www.academy-softtek.com/soap/bank'>"
+						+ "<accountNumber>abc</accountNumber>"
+						+ "<ownerFirstName>jahv</ownerFirstName>"
+						+ "<ownerLastName>hv</ownerLastName>"
+						+ "<amount>100.0</amount>"
+				+ "</bank:accountDetailsResponse>");
+
+		final RequestCreator creator = RequestCreators.withPayload(requestPayload);
 		
-		Source responsePayload = new StringSource(
-			      "<clientDataResponse xmlns='http://www.xpadro.spring.samples.com/orders' " +
-			        "amount='12' confirmationId='GHKG34L' orderDate='2013-10-26+02:00'/>");
-		
-		RequestCreator creator = RequestCreators.withPayload(requestPayload);
-		
-		mockWebServiceClient = MockWebServiceClient.createClient(applicationContext);
 		mockWebServiceClient.sendRequest(creator).andExpect(ResponseMatchers.payload(responsePayload));
 	}
+	
 }
