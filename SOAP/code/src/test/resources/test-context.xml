@@ -8,14 +8,5 @@
 
 	<context:component-scan base-package="com.softtek.java.academy.soap" />
 	<ws:annotation-driven />
-
-	<ws:dynamic-wsdl id="customers" portTypeName="CustomerService"
-		locationUri="/CustomerService" targetNamespace="http://www.academy-softtek.com/soap">
-		<ws:xsd location="/WEB-INF/schemas/xsd/Customer.xsd" />
-	</ws:dynamic-wsdl>
-
-	<ws:dynamic-wsdl id="bank" portTypeName="BankService"
-		locationUri="/BankService" targetNamespace="http://www.academy-softtek.com/soap/bank">
-		<ws:xsd location="/WEB-INF/schemas/xsd/Bank.xsd" />
-	</ws:dynamic-wsdl>
+	
 </beans>
