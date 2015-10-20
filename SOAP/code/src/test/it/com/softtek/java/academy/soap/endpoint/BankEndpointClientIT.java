@@ -1,11 +1,8 @@
 package com.softtek.java.academy.soap.endpoint;
 
-import java.util.Iterator;
-
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.Node;
 import javax.xml.soap.SOAPBody;
-import javax.xml.soap.SOAPBodyElement;
 import javax.xml.soap.SOAPConnection;
 import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPElement;
@@ -25,7 +22,6 @@ import org.w3c.dom.NodeList;
 
 import com.softtek.java.academy.soap.domain.model.BankAccountRequest;
 import com.softtek.java.academy.soap.domain.model.BankAccountResponse;
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 /**
  * Consuming WS using WebServiceTemplate
@@ -78,7 +74,6 @@ public class BankEndpointClientIT {
 	 * 
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
 	@Test
 	public void consumeUsingSaaj() throws Exception {
 
@@ -101,24 +96,23 @@ public class BankEndpointClientIT {
 		Assert.assertNotNull(soapResponse.getSOAPBody());
 		Assert.assertNotNull(soapResponse.getSOAPBody().getFirstChild());
 		
-		Node first = (Node) soapResponse.getSOAPBody().getFirstChild();
+		final Node first = (Node) soapResponse.getSOAPBody().getFirstChild();
 		
 		Assert.assertNotNull(first);
 		
-		NodeList nodeList = first.getChildNodes();
+		final NodeList nodeList = first.getChildNodes();
 		
 		Assert.assertNotNull(nodeList);
 		
 		for(int i=0; i<nodeList.getLength(); i++) {
-			Node n = (Node) nodeList.item(i);
-			System.out.println(n.getNodeValue());
-			
+			final Node n = (Node) nodeList.item(i);
+			final String value = n.getValue();
+			Assert.assertNotNull(value);
 		}
 		
 	}
 
-	private static SOAPMessage createSOAPRequest(final String accountNumber,
-			final String password) throws Exception {
+	private static SOAPMessage createSOAPRequest(final String accountNumber, final String password) throws Exception {
 		final MessageFactory messageFactory = MessageFactory.newInstance();
 		final SOAPMessage soapMessage = messageFactory.createMessage();
 		final SOAPPart soapPart = soapMessage.getSOAPPart();
