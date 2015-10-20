@@ -26,6 +26,8 @@ public class BankEndpoint {
 	/**
 	 * The @PayloadRoot annotation tells Spring-WS that the request method is
 	 * suitable for handling XML messages.
+	 * localPart: Name of the payload root element handled by the annotated method.
+	 * namespace: Namespace of the payload root element handled by the annotated method.
 	 * 
 	 * The @RequestPayload annotation indicates that the parameter should be
 	 * mapped to the payload of the request message.
@@ -38,8 +40,7 @@ public class BankEndpoint {
 	 */
 	@PayloadRoot(localPart = "accountDetailsRequest", namespace = NAME_SPACE)
 	@ResponsePayload
-	public BankAccountResponse getAccountDetails(
-			@RequestPayload BankAccountRequest request) {
+	public BankAccountResponse getAccountDetails(@RequestPayload BankAccountRequest request) {
 		final BankAccountResponse response = bankService.getAccountDetails(
 				request.getAccountNumber(), request.getPassword());
 		return response;

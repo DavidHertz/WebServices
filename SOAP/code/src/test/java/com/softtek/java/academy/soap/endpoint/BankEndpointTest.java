@@ -15,6 +15,10 @@ import org.springframework.ws.test.server.RequestCreators;
 import org.springframework.ws.test.server.ResponseMatchers;
 import org.springframework.xml.transform.StringSource;
 
+/**
+ * Unit test using MockWebServiceClient
+ *
+ */
 @ContextConfiguration("classpath:test-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BankEndpointTest {

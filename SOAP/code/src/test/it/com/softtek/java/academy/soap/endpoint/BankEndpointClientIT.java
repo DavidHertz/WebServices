@@ -11,7 +11,10 @@ import org.springframework.ws.client.core.WebServiceTemplate;
 import com.softtek.java.academy.soap.domain.model.BankAccountRequest;
 import com.softtek.java.academy.soap.domain.model.BankAccountResponse;
 
-
+/**
+ * Consuming WS using WebServiceTemplate
+ *
+ */
 @ContextConfiguration("classpath:client-config.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BankEndpointClientIT {
