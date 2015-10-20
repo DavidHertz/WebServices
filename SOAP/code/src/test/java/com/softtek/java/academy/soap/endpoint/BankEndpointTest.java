@@ -33,7 +33,7 @@ public class BankEndpointTest {
 	public void testValidOrderRequest() {
 		final Source requestPayload = new StringSource(
 				"<bank:accountDetailsRequest xmlns:bank='http://www.academy-softtek.com/soap/bank'>"
-						+ "<numberAccount>abc</numberAccount>"
+						+ "<accountNumber>abc</accountNumber>"
 						+ "<password>1234</password>"
 				+ "</bank:accountDetailsRequest>");
 

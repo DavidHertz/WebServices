@@ -6,30 +6,36 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+/**
+ * Class representing XML request
+ * 
+ * @author JAHV
+ *
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "accountDetailsRequest", namespace = "http://www.academy-softtek.com/soap/bank")
 @XmlType
 public class BankAccountRequest {
 
 	@XmlElement(required = true)
-	private String numberAccount;
+	private String accountNumber;
 
 	@XmlElement(required = true)
 	private String password;
 
 	/**
-	 * @return the numberAccount
+	 * @return the accountNumber
 	 */
-	public String getNumberAccount() {
-		return numberAccount;
+	public String getAccountNumber() {
+		return accountNumber;
 	}
 
 	/**
-	 * @param numberAccount
-	 *            the numberAccount to set
+	 * @param accountNumber
+	 *            the accountNumber to set
 	 */
-	public void setNumberAccount(String numberAccount) {
-		this.numberAccount = numberAccount;
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 	/**

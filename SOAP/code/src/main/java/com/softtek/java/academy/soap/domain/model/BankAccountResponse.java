@@ -6,6 +6,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+/**
+ * Class representing XML response
+ * 
+ * @author JAHV
+ *
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="accountDetailsResponse", namespace="http://www.academy-softtek.com/soap/bank")
 @XmlType(name = "")

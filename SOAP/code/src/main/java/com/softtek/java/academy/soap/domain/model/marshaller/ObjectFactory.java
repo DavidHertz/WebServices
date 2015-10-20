@@ -5,6 +5,11 @@ import javax.xml.bind.annotation.XmlRegistry;
 import com.softtek.java.academy.soap.domain.model.BankAccountRequest;
 import com.softtek.java.academy.soap.domain.model.BankAccountResponse;
 
+/**
+ * Class to marshal XML responses for WebServiceTemplate
+ * @author JAHV
+ *
+ */
 @XmlRegistry
 public class ObjectFactory {
 

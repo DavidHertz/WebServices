@@ -22,7 +22,7 @@ public class BankEndpointClientIT {
 	@Test
 	public void consumeBankService() {
 		final BankAccountRequest request = new BankAccountRequest();
-		request.setNumberAccount("abc");
+		request.setAccountNumber("abc");
 		request.setPassword("123");
 		
 		final BankAccountResponse response = (BankAccountResponse) wsTemplate.marshalSendAndReceive(request);

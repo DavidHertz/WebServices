@@ -6,12 +6,21 @@
   http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd
   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
   
-	<!-- Detects @Endpoint since it is a specialization of @Component -->
+	<!-- Detects @Endpoint -->
 	<context:component-scan base-package="com.softtek.java.academy.soap" />
 
-	<!-- detects @PayloadRoot -->
+	<!-- Detects @PayloadRoot -->
 	<ws:annotation-driven />
 	
+	<!-- 
+		Generate WSDL automatically at http://[server]:[port]/soap/[id]
+		
+		id: For accessing WSDL
+		portTypeName: Defining portTypeName of WSDL
+		locationUri: To consume service
+		targetNamespace: Name space defined in XSD
+		location of XSD file
+	-->
 	<ws:dynamic-wsdl id="bank" 
 		portTypeName="BankService"
 		locationUri="/BankService"
