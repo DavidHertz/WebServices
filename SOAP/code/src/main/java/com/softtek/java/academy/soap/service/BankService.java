@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.softtek.java.academy.soap.domain.exception.NotFoundException;
 import com.softtek.java.academy.soap.domain.model.BankAccountResponse;
 
 @Service
@@ -22,11 +23,11 @@ public class BankService {
 		users.put(user1.getAccountNumber(), user1);
 	}
 
-	public BankAccountResponse getAccountDetails(final String account, final String password) {
+	public BankAccountResponse getAccountDetails(final String account, final String password) throws Exception {
 		final BankAccountResponse user = users.get(account);
 		if(user != null && user.getPassword().equals(password)) {
 			return user;
 		}
-		return null;
+		throw new NotFoundException("Client not found.");
 	}
 }

@@ -33,20 +33,23 @@ public class BankEndpointTest {
 		mockWebServiceClient = MockWebServiceClient.createClient(applicationContext);
 	}
 
+	/**
+	 * Successful call to service
+	 */
 	@Test
 	public void testValidOrderRequest() {
 		final Source requestPayload = new StringSource(
 				"<bank:accountDetailsRequest xmlns:bank='http://www.academy-softtek.com/soap/bank'>"
-						+ "<accountNumber>abc</accountNumber>"
-						+ "<password>1234</password>"
+						+ "<accountNumber>030889</accountNumber>"
+						+ "<password>abc</password>"
 				+ "</bank:accountDetailsRequest>");
 
 		final Source responsePayload = new StringSource(
 				"<bank:accountDetailsResponse xmlns:bank='http://www.academy-softtek.com/soap/bank'>"
-						+ "<accountNumber>abc</accountNumber>"
-						+ "<ownerFirstName>jahv</ownerFirstName>"
-						+ "<ownerLastName>hv</ownerLastName>"
-						+ "<amount>100.0</amount>"
+						+ "<accountNumber>030889</accountNumber>"
+						+ "<ownerFirstName>Jose Antonio</ownerFirstName>"
+						+ "<ownerLastName>Hernandez Vazquez</ownerLastName>"
+						+ "<amount>1000.0</amount>"
 				+ "</bank:accountDetailsResponse>");
 
 		final RequestCreator creator = RequestCreators.withPayload(requestPayload);
@@ -54,4 +57,25 @@ public class BankEndpointTest {
 		mockWebServiceClient.sendRequest(creator).andExpect(ResponseMatchers.payload(responsePayload));
 	}
 	
+	/**
+	 * Unsuccessful call to service
+	 */
+	@Test
+	public void testValidOrderRequestWrong() {
+		final Source requestPayload = new StringSource(
+				"<bank:accountDetailsRequest xmlns:bank='http://www.academy-softtek.com/soap/bank'>"
+						+ "<accountNumber>123</accountNumber>"
+						+ "<password>abc</password>"
+				+ "</bank:accountDetailsRequest>");
+
+		final Source responsePayload = new StringSource(
+				"<SOAP-ENV:Fault xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/'>" +
+						"<faultcode>SOAP-ENV:Server</faultcode>" +
+						"<faultstring xml:lang='en'>Client not found.</faultstring>" +
+				"</SOAP-ENV:Fault>");
+
+		final RequestCreator creator = RequestCreators.withPayload(requestPayload);
+		
+		mockWebServiceClient.sendRequest(creator).andExpect(ResponseMatchers.payload(responsePayload));
+	}
 }

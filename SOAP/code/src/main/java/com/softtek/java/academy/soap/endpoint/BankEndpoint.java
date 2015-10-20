@@ -40,7 +40,7 @@ public class BankEndpoint {
 	 */
 	@PayloadRoot(localPart = "accountDetailsRequest", namespace = NAME_SPACE)
 	@ResponsePayload
-	public BankAccountResponse getAccountDetails(@RequestPayload BankAccountRequest request) {
+	public BankAccountResponse getAccountDetails(@RequestPayload BankAccountRequest request) throws Exception {
 		final BankAccountResponse response = bankService.getAccountDetails(
 				request.getAccountNumber(), request.getPassword());
 		return response;
