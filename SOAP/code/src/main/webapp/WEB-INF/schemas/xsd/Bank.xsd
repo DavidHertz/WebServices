@@ -23,4 +23,24 @@
 		</xs:complexType>
 	</xs:element>
 	
+	<xs:element name="addNewAccountRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="accountNumber" type="xs:string" />
+				<xs:element name="ownerFirstName" type="xs:string"/>
+				<xs:element name="ownerLastName" type="xs:string" />
+				<xs:element name="password" type="xs:string" />
+				<xs:element name="amount" type="xs:double"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="addNewAccountResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
 </xs:schema>

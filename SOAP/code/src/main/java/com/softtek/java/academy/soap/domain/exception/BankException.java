@@ -1,13 +1,13 @@
 package com.softtek.java.academy.soap.domain.exception;
 
-public class NotFoundException extends Exception {
+public class BankException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public NotFoundException(final String message) {
+	public BankException(final String message) {
 		super(message);
 	}
 
