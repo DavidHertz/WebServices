@@ -33,10 +33,12 @@
 
 	<!-- 
 	Servlet for simplified dispatching of Web service messages. 
+	
 	This servlet is a convenient alternative to the standard Spring-MVC DispatcherServlet with separate 
 	WebServiceMessageReceiverHandlerAdapter, MessageDispatcher, and WsdlDefinitionHandlerAdapter instances. 
 	This servlet automatically detects EndpointAdapters, EndpointMappings, and EndpointExceptionResolvers by 
 	type. 
+	
 	This servlet also automatically detects any WsdlDefinition defined in its application context. This WSDL is 
 	exposed under the bean name: for example, a WsdlDefinition bean named 'echo' will be exposed as echo.wsdl in 
 	this servlet's context: http://localhost:8080/spring-ws/echo.wsdl. When the transformWsdlLocations init-param 
@@ -57,16 +59,8 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>spring-ws</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/ws/*</url-pattern>
 	</servlet-mapping>
 	
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.css</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.js</url-pattern>
-	</servlet-mapping>
 </web-app>
  

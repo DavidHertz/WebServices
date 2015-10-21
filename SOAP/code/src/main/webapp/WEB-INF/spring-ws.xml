@@ -23,7 +23,7 @@
 	-->
 	<ws:dynamic-wsdl id="bank" 
 		portTypeName="BankService"
-		locationUri="/BankService"
+		locationUri="/ws/BankService"
 		targetNamespace="http://www.academy-softtek.com/soap/bank">
 			<ws:xsd location="/WEB-INF/schemas/xsd/Bank.xsd" />
 	</ws:dynamic-wsdl>
