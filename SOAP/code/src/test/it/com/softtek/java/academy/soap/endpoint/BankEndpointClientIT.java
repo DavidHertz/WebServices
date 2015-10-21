@@ -84,7 +84,7 @@ public class BankEndpointClientIT {
 		// Send SOAP Message to SOAP Server
 		final String url = "http://localhost:8080/soap/ws/bank.wsdl";
 		final SOAPMessage soapResponse = (SOAPMessage) soapConnection.
-				call(createSOAPRequest("030889", "abc"), url);
+				call(createSOAPRequest("03088", "abc"), url);
 
 		// print SOAP Response
 		System.out.println("Response SOAP Message:");
@@ -130,21 +130,22 @@ public class BankEndpointClientIT {
 		 * <SOAP-ENV:Envelope
 		 * xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
 		 * xmlns:bank="http://www.academy-softtek.com/soap/bank">
-		 * <SOAP-ENV:Header/> <SOAP-ENV:Body> <bank:accountDetailsRequest>
-		 * <accountNumber>?</accountNumber> <password>?</password>
-		 * </bank:accountDetailsRequest> </SOAP-ENV:Body> </SOAP-ENV:Envelope>
+		 * 		<SOAP-ENV:Header/> <SOAP-ENV:Body> 
+		 * 			<bank:accountDetailsRequest>
+		 * 				<accountNumber>?</accountNumber> 
+		 * 				<password>?</password>
+		 * 			</bank:accountDetailsRequest> 
+		 * 		</SOAP-ENV:Body> 
+		 * </SOAP-ENV:Envelope>
 		 */
 
 		// SOAP Body
 		final SOAPBody soapBody = envelope.getBody();
 
-		final SOAPElement soapBodyElem = ((SOAPElement) soapBody)
-				.addChildElement("accountDetailsRequest", preffix);
-		final SOAPElement soapBodyElem1 = soapBodyElem
-				.addChildElement("accountNumber");
+		final SOAPElement soapBodyElem = ((SOAPElement) soapBody).addChildElement("accountDetailsRequest", preffix);
+		final SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("accountNumber");
 		soapBodyElem1.addTextNode(accountNumber);
-		final SOAPElement soapBodyElem2 = soapBodyElem
-				.addChildElement("password");
+		final SOAPElement soapBodyElem2 = soapBodyElem.addChildElement("password");
 		soapBodyElem2.addTextNode(password);
 		soapMessage.saveChanges();
 
