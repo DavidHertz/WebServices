@@ -5,8 +5,9 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.softtek.java.academy.soap.domain.exception.NotFoundException;
+import com.softtek.java.academy.soap.domain.exception.BankException;
 import com.softtek.java.academy.soap.domain.model.BankAccountResponse;
+import com.softtek.java.academy.soap.domain.model.BankAddNewAccountResponse;
 
 @Service
 public class BankService {
@@ -28,6 +29,24 @@ public class BankService {
 		if(user != null && user.getPassword().equals(password)) {
 			return user;
 		}
-		throw new NotFoundException("Client not found.");
+		throw new BankException("Client not found.");
+	}
+	
+	public BankAddNewAccountResponse addNewAccount(final String accountNumber, final String ownerFirstName, 
+			final String ownerLastName, final String password, final Double amount) throws BankException {
+		if(!users.containsKey(accountNumber)) {
+			final BankAccountResponse newUser = new BankAccountResponse();
+			newUser.setAccountNumber(accountNumber);
+			newUser.setAmount(amount);
+			newUser.setOwnerFirstName(ownerFirstName);
+			newUser.setOwnerLastName(ownerLastName);
+			newUser.setPassword(password);
+			users.put(newUser.getAccountNumber(), newUser);
+			
+			final BankAddNewAccountResponse bankAddNewAccountResponse = new BankAddNewAccountResponse();
+			bankAddNewAccountResponse.setResult(true);
+			return bankAddNewAccountResponse;
+		}
+		throw new BankException("Client already exists.");
 	}
 }
